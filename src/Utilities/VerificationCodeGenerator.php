@@ -1,0 +1,21 @@
+<?php
+
+namespace GeorgeTheNerd\LaravelEcash\Utilities;
+
+class VerificationCodeGenerator
+{
+
+    private string $merchantId;
+    private string $merchantSecret;
+
+    public function __construct(string $merchantId, string $merchantSecret)
+    {
+        $this->merchantId = $merchantId;
+        $this->merchantSecret = $merchantSecret;
+    }
+
+    public function generate(float $amount, string $orderRef)
+    {
+        return strtoupper(md5($this->merchantId . $this->merchantSecret . $amount . $orderRef));
+    }
+}
