@@ -2,9 +2,9 @@
 
 namespace GeorgeTheNerd\LaravelEcash\Tests;
 
+use GeorgeTheNerd\LaravelEcash\LaravelEcashServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use GeorgeTheNerd\LaravelEcash\LaravelEcashServiceProvider;
 
 class TestCase extends Orchestra
 {
