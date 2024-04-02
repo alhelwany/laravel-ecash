@@ -8,12 +8,15 @@ use GeorgeTheNerd\LaravelEcash\Enums\Lang;
 
 class PaymentDataObject
 {
-
     private CheckoutType $checkoutType;
+
     private float $amount;
+
     private Lang $lang = Lang::AR;
+
     private Currency $currency = Currency::SYP;
-    private string|null $redirectUrl = null;
+
+    private ?string $redirectUrl = null;
 
     public function __construct(CheckoutType $checkoutType, float $amount)
     {
@@ -46,7 +49,7 @@ class PaymentDataObject
         return $this->amount;
     }
 
-    public function getRedirectUrl(): string|null
+    public function getRedirectUrl(): ?string
     {
         return $this->redirectUrl;
     }

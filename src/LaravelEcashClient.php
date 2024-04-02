@@ -9,9 +9,7 @@ use GeorgeTheNerd\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 class LaravelEcashClient
 {
-
     private PaymentUrlGenerator $paymentUrlGenerator;
-
 
     public function __construct($gatewayUrl, $terminalKey, $merchantId, $merchantSecret)
     {
