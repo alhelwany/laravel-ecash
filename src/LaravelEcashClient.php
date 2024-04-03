@@ -5,6 +5,7 @@ namespace GeorgeTheNerd\LaravelEcash;
 use GeorgeTheNerd\LaravelEcash\DataObjects\PaymentDataObject;
 use GeorgeTheNerd\LaravelEcash\Utilities\ArrayToUrl;
 use GeorgeTheNerd\LaravelEcash\Utilities\PaymentUrlGenerator;
+use GeorgeTheNerd\LaravelEcash\Utilities\UrlEncoder;
 use GeorgeTheNerd\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 class LaravelEcashClient
@@ -20,7 +21,8 @@ class LaravelEcashClient
             $terminalKey,
             $merchantId,
             new ArrayToUrl,
-            new VerificationCodeGenerator($merchantId, $merchantSecret)
+            new VerificationCodeGenerator($merchantId, $merchantSecret),
+            new UrlEncoder
         );
     }
 

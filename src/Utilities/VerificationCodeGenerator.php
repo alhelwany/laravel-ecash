@@ -14,7 +14,14 @@ class VerificationCodeGenerator
         $this->merchantSecret = $merchantSecret;
     }
 
-    public function generate(float $amount, string $orderRef)
+    /**
+     * Generates Verification Token
+     *
+     * @param float $amount
+     * @param string $orderRef
+     * @return string
+     */
+    public function generate(float $amount, string $orderRef): string
     {
         return strtoupper(md5($this->merchantId . $this->merchantSecret . $amount . $orderRef));
     }

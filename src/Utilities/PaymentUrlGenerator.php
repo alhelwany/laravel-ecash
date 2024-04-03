@@ -21,17 +21,23 @@ class PaymentUrlGenerator
     private UrlEncoder $urlEncoder;
 
 
-    public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, ArrayToUrl $arrayToUrl, VerificationCodeGenerator $verificationCodeGenerator)
+    public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, ArrayToUrl $arrayToUrl, VerificationCodeGenerator $verificationCodeGenerator, UrlEncoder $urlEncoder)
     {
         $this->gatewayUrl = $gatewayUrl;
         $this->terminalKey = $terminalKey;
         $this->merchantId = $merchantId;
         $this->arrayToUrl = $arrayToUrl;
         $this->verificationCodeGenerator = $verificationCodeGenerator;
-        $this->urlEncoder = new UrlEncoder;
+        $this->urlEncoder = $urlEncoder;
     }
 
-    public function generateUrl(PaymentDataObject $paymentDataObject)
+    /**
+     * Generates Payment Url to be redirected to
+     *
+     * @param PaymentDataObject $paymentDataObject
+     * @return string
+     */
+    public function generateUrl(PaymentDataObject $paymentDataObject): string
     {
         $orderRef = 1;
         return $this->arrayToUrl->generate($this->gatewayUrl, [
