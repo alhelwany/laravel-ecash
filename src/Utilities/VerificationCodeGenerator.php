@@ -4,8 +4,8 @@ namespace GeorgeTheNerd\LaravelEcash\Utilities;
 
 class VerificationCodeGenerator
 {
-
     private string $merchantId;
+
     private string $merchantSecret;
 
     public function __construct(string $merchantId, string $merchantSecret)
@@ -23,6 +23,6 @@ class VerificationCodeGenerator
      */
     public function generate(float $amount, string $orderRef): string
     {
-        return strtoupper(md5($this->merchantId . $this->merchantSecret . $amount . $orderRef));
+        return strtoupper(md5($this->merchantId.$this->merchantSecret.$amount.$orderRef));
     }
 }

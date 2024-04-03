@@ -3,8 +3,6 @@
 namespace GeorgeTheNerd\LaravelEcash\Utilities;
 
 use GeorgeTheNerd\LaravelEcash\DataObjects\PaymentDataObject;
-use GeorgeTheNerd\LaravelEcash\Utilities\ArrayToUrl;
-use GeorgeTheNerd\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 class PaymentUrlGenerator
 {
@@ -40,6 +38,7 @@ class PaymentUrlGenerator
     public function generateUrl(PaymentDataObject $paymentDataObject): string
     {
         $orderRef = 1;
+
         return $this->arrayToUrl->generate($this->gatewayUrl, [
             'checkout',
             $paymentDataObject->getCheckoutType()->value,
@@ -51,7 +50,7 @@ class PaymentUrlGenerator
             $paymentDataObject->getLang()->value,
             1,
             $this->urlEncoder->encode($paymentDataObject->getRedirectUrl()),
-            $this->urlEncoder->encode(route('ecash.callback'))
+            $this->urlEncoder->encode(route('ecash.callback')),
         ]);
     }
 }
