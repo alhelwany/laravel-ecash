@@ -16,10 +16,6 @@ class VerificationCodeGenerator
 
     /**
      * Generates Verification Token
-     *
-     * @param float $amount
-     * @param string $orderRef
-     * @return string
      */
     public function generate(float $amount, string $orderRef): string
     {
