@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash;
+namespace MhdGhaithAlhelwany\LaravelEcash;
 
 use Illuminate\Container\Container;
 use Spatie\LaravelPackageTools\Package;

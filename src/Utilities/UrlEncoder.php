@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash\Utilities;
+namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
 class UrlEncoder
 {

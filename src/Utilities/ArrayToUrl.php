@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash\Utilities;
+namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
 class ArrayToUrl
 {
@@ -11,8 +11,8 @@ class ArrayToUrl
     {
         $url = $baseUrl;
         foreach ($args as $arg) {
-            if (! is_null($arg)) {
-                $url .= '/'.$arg;
+            if (!is_null($arg)) {
+                $url .= '/' . $arg;
             }
         }
 

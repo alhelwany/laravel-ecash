@@ -1,8 +1,8 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash\Utilities;
+namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
-use GeorgeTheNerd\LaravelEcash\DataObjects\PaymentDataObject;
+use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
 
 class PaymentUrlGenerator
 {

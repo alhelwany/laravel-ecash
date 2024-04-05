@@ -8,11 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_ecash_table', function (Blueprint $table) {
+        Schema::create('ecash_payments', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->float('amount');
+            $table->string('verification_code', length: 32);
+            $table->string('checkout_type', length: 10);
+            $table->string('currency');
             $table->timestamps();
         });
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash;
+namespace MhdGhaithAlhelwany\LaravelEcash;
 
-use GeorgeTheNerd\LaravelEcash\DataObjects\PaymentDataObject;
-use GeorgeTheNerd\LaravelEcash\Utilities\ArrayToUrl;
-use GeorgeTheNerd\LaravelEcash\Utilities\PaymentUrlGenerator;
-use GeorgeTheNerd\LaravelEcash\Utilities\UrlEncoder;
-use GeorgeTheNerd\LaravelEcash\Utilities\VerificationCodeGenerator;
+use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use MhdGhaithAlhelwany\LaravelEcash\Utilities\ArrayToUrl;
+use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
+use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
+use MhdGhaithAlhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 class LaravelEcashClient
 {

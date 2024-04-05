@@ -1,12 +1,12 @@
 {
-    "name": "georgethenerd/laravel-ecash",
+    "name": "mhdghaithalhelwany/laravel-ecash",
     "description": "Laravel Payment Gateway for Ecash (Syria)",
     "keywords": [
         "Mhd Ghaith Alhelwany",
         "laravel",
         "laravel-ecash"
     ],
-    "homepage": "https://github.com/georgethenerd/laravel-ecash",
+    "homepage": "https://github.com/mhdghaithalhelwany/laravel-ecash",
     "license": "MIT",
     "authors": [
         {
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "GeorgeTheNerd\\LaravelEcash\\": "src/",
-            "GeorgeTheNerd\\LaravelEcash\\Database\\Factories\\": "database/factories/"
+            "MhdGhaithAlhelwany\\LaravelEcash\\": "src/",
+            "MhdGhaithAlhelwany\\LaravelEcash\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GeorgeTheNerd\\LaravelEcash\\Tests\\": "tests/",
+            "MhdGhaithAlhelwany\\LaravelEcash\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -72,10 +72,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "GeorgeTheNerd\\LaravelEcash\\LaravelEcashServiceProvider"
+                "MhdGhaithAlhelwany\\LaravelEcash\\LaravelEcashServiceProvider"
             ],
             "aliases": {
-                "LaravelEcash": "GeorgeTheNerd\\LaravelEcash\\Facades\\LaravelEcash"
+                "LaravelEcash": "MhdGhaithAlhelwany\\LaravelEcash\\Facades\\LaravelEcash"
             }
         }
     },

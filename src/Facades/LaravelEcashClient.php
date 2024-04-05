@@ -1,16 +1,16 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash\Facades;
+namespace MhdGhaithAlhelwany\LaravelEcash\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \GeorgeTheNerd\LaravelEcash\LaravelEcash
+ * @see \MhdGhaithAlhelwany\LaravelEcash\LaravelEcash
  */
 class LaravelEcashClient extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \GeorgeTheNerd\LaravelEcash\LaravelEcashClient::class;
+        return \MhdGhaithAlhelwany\LaravelEcash\LaravelEcashClient::class;
     }
 }

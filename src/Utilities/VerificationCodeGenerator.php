@@ -1,6 +1,6 @@
 <?php
 
-namespace GeorgeTheNerd\LaravelEcash\Utilities;
+namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
 class VerificationCodeGenerator
 {
@@ -19,6 +19,6 @@ class VerificationCodeGenerator
      */
     public function generate(float $amount, string|int $orderRef): string
     {
-        return strtoupper(md5($this->merchantId.$this->merchantSecret.$amount.$orderRef));
+        return strtoupper(md5($this->merchantId . $this->merchantSecret . $amount . $orderRef));
     }
 }
