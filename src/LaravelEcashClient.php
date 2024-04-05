@@ -11,13 +11,20 @@ use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
 
+
 class LaravelEcashClient
 {
     private PaymentUrlGenerator $paymentUrlGenerator;
     private VerificationCodeGenerator $verificationCodeGenerator;
     private PaymentModelUtility $paymentModelUtility;
 
-    public function __construct($gatewayUrl, $terminalKey, $merchantId, $merchantSecret)
+    /**
+     * @param string $gatewayUrl
+     * @param string $terminalKey
+     * @param string $merchantId
+     * @param string $merchantSecret
+     */
+    public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, string $merchantSecret)
     {
         $this->paymentUrlGenerator = new PaymentUrlGenerator(
             $gatewayUrl,
@@ -30,7 +37,12 @@ class LaravelEcashClient
         $this->paymentModelUtility = new PaymentModelUtility($this->verificationCodeGenerator);
     }
 
-    public static function getInstance()
+    /**
+     * Returns instance of self using the configs
+     *
+     * @return self
+     */
+    public static function getInstance(): self
     {
         return new self(
             config('ecash.gatewayUrl'),
@@ -41,6 +53,12 @@ class LaravelEcashClient
     }
 
 
+    /**
+     * Creates EcashPayment Model with the verification code - updates the verification code in ExtendedPaymentDataObject
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return EcashPayment
+     */
     private function createModel(ExtendedPaymentDataObject $extendedPaymentDataObject): EcashPayment
     {
         $model = $this->paymentModelUtility->create($extendedPaymentDataObject);
@@ -50,12 +68,24 @@ class LaravelEcashClient
         return $model;
     }
 
+    /**
+     * Generates the checkout URL from ExtendedPaymentDataObject
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return string
+     */
     private function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): string
     {
         return $this->paymentUrlGenerator->generateUrl($extendedPaymentDataObject);
     }
 
-    public function checkout(PaymentDataObject $paymentDataObject)
+    /**
+     * Starts the transaction process
+     *
+     * @param PaymentDataObject $paymentDataObject
+     * @return array ['EcashPayment model', 'checkoutUrl']
+     */
+    public function checkout(PaymentDataObject $paymentDataObject): array
     {
         $extendedPaymentDataObject = new ExtendedPaymentDataObject($paymentDataObject);
         $model = $this->createModel($extendedPaymentDataObject);

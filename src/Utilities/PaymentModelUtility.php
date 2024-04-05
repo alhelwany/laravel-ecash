@@ -8,6 +8,12 @@ use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
 
 class PaymentModelUtility
 {
+    /**
+     * Creates EcashPayment Model from ExtendedPaymentDataObject
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return EcashPayment
+     */
     public function create(ExtendedPaymentDataObject $extendedPaymentDataObject): EcashPayment
     {
         $model = EcashPayment::create([
@@ -20,6 +26,12 @@ class PaymentModelUtility
         return $model;
     }
 
+    /**
+     * Updates verification_code in the EcashPayment Model
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return void
+     */
     public function updateVerificationCode(ExtendedPaymentDataObject $extendedPaymentDataObject): void
     {
         EcashPayment::query()

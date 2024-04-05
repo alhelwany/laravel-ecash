@@ -32,10 +32,4 @@ class EcashPayment extends Model
     {
         return $this->verificationCode;
     }
-
-    public function updateVerificationCode(string $verificationCode): self
-    {
-        $this->update(['verification_code' => $verificationCode]);
-        return $this;
-    }
 }
