@@ -2,6 +2,8 @@
 
 namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
+use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+
 class VerificationCodeGenerator
 {
     private string $merchantId;
@@ -15,10 +17,27 @@ class VerificationCodeGenerator
     }
 
     /**
-     * Generates Verification Token
+     * Generates Verification Code
+     *
+     * @param float $amount
+     * @param string|integer $orderRef
+     * @return string
      */
     public function generate(float $amount, string|int $orderRef): string
     {
         return strtoupper(md5($this->merchantId . $this->merchantSecret . $amount . $orderRef));
+    }
+
+    /**
+     * Generates Verification Code from ExtendedPaymentDataObject
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return string
+     */
+    public function generateFromExtendedPaymentDataObject(ExtendedPaymentDataObject $extendedPaymentDataObject): string
+    {
+        $verificationCode = $this->generate($extendedPaymentDataObject->getAmount(), $extendedPaymentDataObject->getId());
+        $extendedPaymentDataObject->setVerificationCode($verificationCode);
+        return $verificationCode;
     }
 }

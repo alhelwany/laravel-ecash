@@ -2,6 +2,7 @@
 
 namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
 
+use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
 use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
 
 class PaymentUrlGenerator
@@ -14,38 +15,33 @@ class PaymentUrlGenerator
 
     private ArrayToUrl $arrayToUrl;
 
-    private VerificationCodeGenerator $verificationCodeGenerator;
-
     private UrlEncoder $urlEncoder;
 
-    public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, ArrayToUrl $arrayToUrl, VerificationCodeGenerator $verificationCodeGenerator, UrlEncoder $urlEncoder)
+    public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, ArrayToUrl $arrayToUrl, UrlEncoder $urlEncoder)
     {
         $this->gatewayUrl = $gatewayUrl;
         $this->terminalKey = $terminalKey;
         $this->merchantId = $merchantId;
         $this->arrayToUrl = $arrayToUrl;
-        $this->verificationCodeGenerator = $verificationCodeGenerator;
         $this->urlEncoder = $urlEncoder;
     }
 
     /**
      * Generates Payment Url to be redirected to
      */
-    public function generateUrl(PaymentDataObject $paymentDataObject): string
+    public function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): string
     {
-        $orderRef = 1;
-
         return $this->arrayToUrl->generate($this->gatewayUrl, [
             'checkout',
-            $paymentDataObject->getCheckoutType()->value,
+            $extendedPaymentDataObject->getCheckoutType()->value,
             $this->terminalKey,
             $this->merchantId,
-            $this->verificationCodeGenerator->generate($paymentDataObject->getAmount(), $orderRef),
-            $paymentDataObject->getCurrency()->value,
-            $paymentDataObject->getAmount(),
-            $paymentDataObject->getLang()->value,
-            1,
-            $this->urlEncoder->encode($paymentDataObject->getRedirectUrl()),
+            $extendedPaymentDataObject->getVerificationCode(),
+            $extendedPaymentDataObject->getCurrency()->value,
+            $extendedPaymentDataObject->getAmount(),
+            $extendedPaymentDataObject->getLang()->value,
+            $extendedPaymentDataObject->getId(),
+            $this->urlEncoder->encode($extendedPaymentDataObject->getRedirectUrl()),
             $this->urlEncoder->encode(route('ecash.callback')),
         ]);
     }

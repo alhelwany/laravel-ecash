@@ -11,9 +11,10 @@ return new class extends Migration
         Schema::create('ecash_payments', function (Blueprint $table) {
             $table->id();
             $table->float('amount');
-            $table->string('verification_code', length: 32);
+            $table->string('verification_code', length: 32)->nullable();
             $table->string('checkout_type', length: 10);
             $table->string('currency');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

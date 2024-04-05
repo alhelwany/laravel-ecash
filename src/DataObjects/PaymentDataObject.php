@@ -8,15 +8,15 @@ use MhdGhaithAlhelwany\LaravelEcash\Enums\Lang;
 
 class PaymentDataObject
 {
-    private CheckoutType $checkoutType;
+    protected CheckoutType $checkoutType;
 
-    private float $amount;
+    protected float $amount;
 
-    private Lang $lang = Lang::AR;
+    protected Lang $lang = Lang::AR;
 
-    private Currency $currency = Currency::SYP;
+    protected Currency $currency = Currency::SYP;
 
-    private ?string $redirectUrl = null;
+    protected ?string $redirectUrl = null;
 
     public function __construct(CheckoutType $checkoutType, float $amount)
     {
