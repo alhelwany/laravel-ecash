@@ -13,7 +13,6 @@ class LaravelEcashServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-ecash')
             ->hasConfigFile()
-            ->hasViews()
             ->hasMigration('create_laravel-ecash_table')
             ->hasRoute('ecash');
 
