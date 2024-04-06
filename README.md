@@ -10,7 +10,7 @@ Simplify the integration of Ecash payments into your Laravel applications. This 
 You can install the package via composer:
 
 ```bash
-composer require Organon/laravel-ecash
+composer require organon/laravel-ecash
 ```
 
 You can publish and run the migrations with:
