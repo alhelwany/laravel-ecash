@@ -3,7 +3,6 @@
 namespace Organon\LaravelEcash\Utilities;
 
 use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
 
 class PaymentUrlGenerator
 {

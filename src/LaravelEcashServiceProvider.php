@@ -13,7 +13,7 @@ class LaravelEcashServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-ecash')
             ->hasConfigFile()
-            ->hasMigration('create_laravel-ecash_table')
+            ->hasMigration('create_ecash_payments_table')
             ->hasRoute('ecash');
 
         Container::getInstance()->singleton(LaravelEcashClient::class, function () {
