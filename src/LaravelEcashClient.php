@@ -6,6 +6,7 @@ use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
 use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
 use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\ArrayToUrl;
+use MhdGhaithAlhelwany\LaravelEcash\Utilities\CallbackTokenVerifier;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentModelUtility;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
 use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
@@ -17,6 +18,7 @@ class LaravelEcashClient
     private PaymentUrlGenerator $paymentUrlGenerator;
     private VerificationCodeGenerator $verificationCodeGenerator;
     private PaymentModelUtility $paymentModelUtility;
+    private CallbackTokenVerifier $callbackTokenVerifier;
 
     /**
      * @param string $gatewayUrl
@@ -35,6 +37,7 @@ class LaravelEcashClient
         );
         $this->verificationCodeGenerator = new VerificationCodeGenerator($merchantId, $merchantSecret);
         $this->paymentModelUtility = new PaymentModelUtility($this->verificationCodeGenerator);
+        $this->callbackTokenVerifier = new CallbackTokenVerifier($merchantId, $merchantSecret);
     }
 
     /**
@@ -95,5 +98,19 @@ class LaravelEcashClient
             'model' => $model,
             'url' => $url
         ];
+    }
+
+    /**
+     * Verifies Token sent from Ecash
+     *
+     * @param string $token
+     * @param string $transactionNo
+     * @param float $amount
+     * @param integer $orderRef
+     * @return boolean
+     */
+    public function verifyCallbackToken(string $token, string $transactionNo, float $amount, int $orderRef): bool
+    {
+        return $this->callbackTokenVerifier->verify($token, $transactionNo, $amount, $orderRef);
     }
 }

@@ -2,10 +2,6 @@
 
 namespace MhdGhaithAlhelwany\LaravelEcash\DataObjects;
 
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\Currency;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\Lang;
-
 class ExtendedPaymentDataObject extends PaymentDataObject
 {
     private $id;

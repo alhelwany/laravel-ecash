@@ -14,7 +14,9 @@ class EcashPayment extends Model
         'amount',
         'checkout_type',
         'currency',
-        'status'
+        'status',
+        'verification_token',
+        'transaction_no'
     ];
 
     protected $casts = [
