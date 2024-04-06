@@ -1,6 +1,6 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
+namespace Organon\LaravelEcash\Utilities;
 
 class ArrayToUrl
 {

@@ -16,7 +16,7 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="MhdGhaithAlhelwany Test Suite">
+        <testsuite name="laravel-ecash Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

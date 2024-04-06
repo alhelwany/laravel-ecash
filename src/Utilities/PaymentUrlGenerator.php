@@ -1,9 +1,9 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Utilities;
+namespace Organon\LaravelEcash\Utilities;
 
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
 
 class PaymentUrlGenerator
 {

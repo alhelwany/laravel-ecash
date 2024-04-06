@@ -1,10 +1,10 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\DataObjects;
+namespace Organon\LaravelEcash\DataObjects;
 
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\Currency;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\Lang;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Enums\Currency;
+use Organon\LaravelEcash\Enums\Lang;
 
 class PaymentDataObject
 {

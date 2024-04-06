@@ -1,6 +1,6 @@
 <?php
 
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
+use Organon\LaravelEcash\Utilities\UrlEncoder;
 
 $encoderObject = new UrlEncoder;
 

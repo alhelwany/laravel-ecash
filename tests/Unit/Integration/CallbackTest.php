@@ -1,9 +1,9 @@
 <?php
 
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\PaymentStatus;
-use MhdGhaithAlhelwany\LaravelEcash\Facades\LaravelEcashClient;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Enums\PaymentStatus;
+use Organon\LaravelEcash\Facades\LaravelEcashClient;
 
 it('can callback with success', function () {
 

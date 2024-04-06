@@ -1,9 +1,9 @@
 # Laravel Payment Gateway for Ecash (Syria)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/MhdGhaithAlhelwany/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/MhdGhaithAlhelwany/laravel-ecash)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/MhdGhaithAlhelwany/laravel-ecash/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/MhdGhaithAlhelwany/laravel-ecash/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/MhdGhaithAlhelwany/laravel-ecash/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/MhdGhaithAlhelwany/laravel-ecash/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/MhdGhaithAlhelwany/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/MhdGhaithAlhelwany/laravel-ecash)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Organon/laravel-ecash/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/Organon/laravel-ecash/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/Organon/laravel-ecash/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/Organon/laravel-ecash/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
@@ -20,7 +20,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require MhdGhaithAlhelwany/laravel-ecash
+composer require Organon/laravel-ecash
 ```
 
 You can publish and run the migrations with:
@@ -52,8 +52,8 @@ php artisan vendor:publish --tag="laravel-ecash-views"
 ## Usage
 
 ```php
-$laravelEcash = new MhdGhaithAlhelwany\LaravelEcash();
-echo $laravelEcash->echoPhrase('Hello, MhdGhaithAlhelwany!');
+$laravelEcash = new Organon\LaravelEcash();
+echo $laravelEcash->echoPhrase('Hello, Organon!');
 ```
 
 ## Testing

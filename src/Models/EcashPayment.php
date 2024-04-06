@@ -1,12 +1,12 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Models;
+namespace Organon\LaravelEcash\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\Currency;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\PaymentStatus;
+use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Enums\Currency;
+use Organon\LaravelEcash\Enums\PaymentStatus;
 
 class EcashPayment extends Model
 {

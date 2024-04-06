@@ -1,11 +1,11 @@
 <?php
 
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\ArrayToUrl;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
+use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Utilities\ArrayToUrl;
+use Organon\LaravelEcash\Utilities\PaymentUrlGenerator;
+use Organon\LaravelEcash\Utilities\UrlEncoder;
 
 
 

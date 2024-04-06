@@ -1,16 +1,16 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash;
+namespace Organon\LaravelEcash;
 
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\ArrayToUrl;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\CallbackTokenVerifier;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentModelUtility;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\UrlEncoder;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
+use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Models\EcashPayment;
+use Organon\LaravelEcash\Utilities\ArrayToUrl;
+use Organon\LaravelEcash\Utilities\CallbackTokenVerifier;
+use Organon\LaravelEcash\Utilities\PaymentModelUtility;
+use Organon\LaravelEcash\Utilities\PaymentUrlGenerator;
+use Organon\LaravelEcash\Utilities\UrlEncoder;
+use Organon\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 
 class LaravelEcashClient

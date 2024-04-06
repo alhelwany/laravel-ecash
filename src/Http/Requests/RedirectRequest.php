@@ -1,6 +1,6 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Http\Requests;
+namespace Organon\LaravelEcash\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,11 +1,11 @@
 <?php
 
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\DataObjects\PaymentDataObject;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\CheckoutType;
-use MhdGhaithAlhelwany\LaravelEcash\Enums\PaymentStatus;
-use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\PaymentModelUtility;
+use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Enums\PaymentStatus;
+use Organon\LaravelEcash\Models\EcashPayment;
+use Organon\LaravelEcash\Utilities\PaymentModelUtility;
 
 $paymentModelUtility = new PaymentModelUtility;
 

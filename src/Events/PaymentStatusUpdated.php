@@ -1,11 +1,11 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Events;
+namespace Organon\LaravelEcash\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
+use Organon\LaravelEcash\Models\EcashPayment;
 
 class PaymentStatusUpdated
 {

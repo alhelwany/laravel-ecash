@@ -1,9 +1,9 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Http\Requests;
+namespace Organon\LaravelEcash\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use MhdGhaithAlhelwany\LaravelEcash\Http\Rules\CallbackTokenValid;
+use Organon\LaravelEcash\Http\Rules\CallbackTokenValid;
 
 class CallbackRequest extends FormRequest
 {

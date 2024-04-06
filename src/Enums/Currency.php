@@ -1,6 +1,6 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Enums;
+namespace Organon\LaravelEcash\Enums;
 
 enum Currency: string
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Database\Factories;
+namespace Organon\LaravelEcash\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

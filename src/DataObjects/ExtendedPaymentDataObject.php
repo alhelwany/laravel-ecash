@@ -1,6 +1,6 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\DataObjects;
+namespace Organon\LaravelEcash\DataObjects;
 
 class ExtendedPaymentDataObject extends PaymentDataObject
 {

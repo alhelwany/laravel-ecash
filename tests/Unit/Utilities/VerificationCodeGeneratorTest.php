@@ -1,6 +1,6 @@
 <?php
 
-use MhdGhaithAlhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
+use Organon\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 $verificationCodeGenerator = new VerificationCodeGenerator('12345', '54321');
 

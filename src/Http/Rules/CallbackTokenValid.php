@@ -1,11 +1,11 @@
 <?php
 
-namespace MhdGhaithAlhelwany\LaravelEcash\Http\Rules;
+namespace Organon\LaravelEcash\Http\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use MhdGhaithAlhelwany\LaravelEcash\Facades\LaravelEcashClient;
-use MhdGhaithAlhelwany\LaravelEcash\Http\Requests\CallbackRequest;
+use Organon\LaravelEcash\Facades\LaravelEcashClient;
+use Organon\LaravelEcash\Http\Requests\CallbackRequest;
 
 /**
  * Verifies if the token sent by ecash is valid using verifyCallbackToken in LaravelEcashClient 

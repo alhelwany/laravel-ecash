@@ -1,10 +1,12 @@
 {
-    "name": "mhdghaithalhelwany/laravel-ecash",
+    "name": "organon/laravel-ecash",
     "description": "Laravel Payment Gateway for Ecash (Syria)",
     "keywords": [
         "Mhd Ghaith Alhelwany",
+        "Organon",
         "laravel",
-        "laravel-ecash"
+        "laravel-ecash",
+        "Ecash Syria"
     ],
     "homepage": "https://github.com/mhdghaithalhelwany/laravel-ecash",
     "license": "MIT",
@@ -34,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "MhdGhaithAlhelwany\\LaravelEcash\\": "src/",
-            "MhdGhaithAlhelwany\\LaravelEcash\\Database\\Factories\\": "database/factories/"
+            "Organon\\LaravelEcash\\": "src/",
+            "Organon\\LaravelEcash\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MhdGhaithAlhelwany\\LaravelEcash\\Tests\\": "tests/",
+            "Organon\\LaravelEcash\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -72,10 +74,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MhdGhaithAlhelwany\\LaravelEcash\\LaravelEcashServiceProvider"
+                "Organon\\LaravelEcash\\LaravelEcashServiceProvider"
             ],
             "aliases": {
-                "LaravelEcash": "MhdGhaithAlhelwany\\LaravelEcash\\Facades\\LaravelEcash"
+                "LaravelEcash": "Organon\\LaravelEcash\\Facades\\LaravelEcash"
             }
         }
     },
