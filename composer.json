@@ -1,5 +1,6 @@
 {
     "name": "organon/laravel-ecash",
+    "version": "1.0.0",
     "description": "Laravel Payment Gateway for Ecash (Syria)",
     "keywords": [
         "Mhd Ghaith Alhelwany",
@@ -80,7 +81,7 @@
                 "LaravelEcash": "Organon\\LaravelEcash\\Facades\\LaravelEcash"
             },
             "dont-discover": [
-                "Organon\\LaravelEcash\\Facades\\LaravelEcash\\DataObjects\\ExtendedPaymentDataObject",
+                "Organon\\LaravelEcash\\DataObjects",
                 "Organon\\LaravelEcash\\Http",
                 "Organon\\LaravelEcash\\Utilities",
                 "Organon\\LaravelEcash\\Tests"
