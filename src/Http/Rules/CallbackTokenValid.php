@@ -13,8 +13,11 @@ use MhdGhaithAlhelwany\LaravelEcash\Http\Requests\CallbackRequest;
 class CallbackTokenValid implements ValidationRule
 {
 
-    public function __construct(public CallbackRequest $request)
+    private CallbackRequest $request;
+
+    public function __construct(CallbackRequest $request)
     {
+        $this->request = $request;
     }
 
     /**
