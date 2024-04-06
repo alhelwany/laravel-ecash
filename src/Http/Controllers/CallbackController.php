@@ -3,7 +3,7 @@
 namespace MhdGhaithAlhelwany\LaravelEcash\Http\Controllers;
 
 use MhdGhaithAlhelwany\LaravelEcash\Enums\PaymentStatus;
-use MhdGhaithAlhelwany\LaravelEcash\Evenets\PaymentStatusUpdated;
+use MhdGhaithAlhelwany\LaravelEcash\Events\PaymentStatusUpdated;
 use MhdGhaithAlhelwany\LaravelEcash\Http\Requests\CallbackRequest;
 use MhdGhaithAlhelwany\LaravelEcash\Models\EcashPayment;
 

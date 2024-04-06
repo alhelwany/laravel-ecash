@@ -5,6 +5,7 @@ namespace MhdGhaithAlhelwany\LaravelEcash\Tests;
 use MhdGhaithAlhelwany\LaravelEcash\LaravelEcashServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -30,6 +31,12 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('app.debug', false);
+        config()->set('ecash.terminalKey', '12345');
+        config()->set('ecash.merchantId', '54321');
+        config()->set('ecash.merchantSecret', 'FDSj2134PiewcczS3');
+        config()->set('app.url', 'https://laravel-ecash-test.com');
+        URL::forceRootUrl('https://laravel-ecash-test.com');
 
         $migration = include __DIR__ . '/../database/migrations/create_ecash_payments_table.php.stub';
         $migration->up();

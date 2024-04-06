@@ -15,8 +15,9 @@ class EcashPayment extends Model
         'checkout_type',
         'currency',
         'status',
-        'verification_token',
-        'transaction_no'
+        'verification_code',
+        'transaction_no',
+        'message'
     ];
 
     protected $casts = [
@@ -30,8 +31,8 @@ class EcashPayment extends Model
         return $this->id;
     }
 
-    public function getVerificationCode(): string
+    public function getVerificationCode(): ?string
     {
-        return $this->verificationCode;
+        return $this->verification_code;
     }
 }

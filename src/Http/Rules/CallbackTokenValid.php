@@ -25,7 +25,7 @@ class CallbackTokenValid implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (LaravelEcashClient::verifyCallbackToken($this->request->getToken(), $this->request->getAmount(), $this->request->getOrderRef())) {
+        if (!LaravelEcashClient::verifyCallbackToken($value, $this->request->getTransactionNo(), $this->request->getAmount(), $this->request->getOrderRef())) {
             $fail('Invalid Token');
         }
     }

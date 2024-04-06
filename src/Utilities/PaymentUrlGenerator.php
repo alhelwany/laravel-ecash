@@ -31,6 +31,7 @@ class PaymentUrlGenerator
      */
     public function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): string
     {
+        $redirectUrl = is_null($extendedPaymentDataObject->getRedirectUrl()) ? config('app.url') : $extendedPaymentDataObject->getRedirectUrl();
         return $this->arrayToUrl->generate($this->gatewayUrl, [
             'checkout',
             $extendedPaymentDataObject->getCheckoutType()->value,
@@ -41,7 +42,13 @@ class PaymentUrlGenerator
             $extendedPaymentDataObject->getAmount(),
             $extendedPaymentDataObject->getLang()->value,
             $extendedPaymentDataObject->getId(),
-            $this->urlEncoder->encode($extendedPaymentDataObject->getRedirectUrl()),
+            $this->urlEncoder->encode(
+                route('ecash.redirect', [
+                    'paymentId' => $extendedPaymentDataObject->getId(),
+                    'token' => $extendedPaymentDataObject->getVerificationCode(),
+                    'redirect_url' => $redirectUrl
+                ])
+            ),
             $this->urlEncoder->encode(route('ecash.callback')),
         ]);
     }

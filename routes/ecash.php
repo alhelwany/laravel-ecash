@@ -2,5 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use MhdGhaithAlhelwany\LaravelEcash\Http\Controllers\CallbackController;
+use MhdGhaithAlhelwany\LaravelEcash\Http\Controllers\RedirectController;
 
-Route::get('/ecash/callback', CallbackController::class)->name('ecash.callback');
+Route::post('/ecash/callback', CallbackController::class)->name('ecash.callback');
+Route::get('/ecash/redirect', RedirectController::class)->name('ecash.redirect');

@@ -11,14 +11,14 @@ class CallbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'Token' => [
-                'required', new CallbackTokenValid($this)
-            ],
             'IsSuccess' => ['required', 'boolean'],
             'Message' => ['required'],
             'OrderRef' => ['required'],
             'TransactionNo' => ['required'],
-            'Amount' => ['required', 'numeric']
+            'Amount' => ['required', 'numeric'],
+            'Token' => [
+                'required', new CallbackTokenValid($this)
+            ],
         ];
     }
 
