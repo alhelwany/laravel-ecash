@@ -11,11 +11,8 @@ class PaymentStatusUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private EcashPayment $paymentModel;
-
-    public function __construct(EcashPayment $paymentModel)
+    public function __construct(private EcashPayment $paymentModel)
     {
-        $this->paymentModel = $paymentModel;
     }
 
     public function getPaymentModel(): EcashPayment
