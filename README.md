@@ -1,19 +1,9 @@
 # Laravel Payment Gateway for Ecash (Syria)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Organon/laravel-ecash/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/Organon/laravel-ecash/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/Organon/laravel-ecash/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/Organon/laravel-ecash/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Simplify the integration of Ecash payments into your Laravel applications. This package offers a streamlined setup and intuitive API to process payments quickly and securely. 
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-ecash.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-ecash)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -40,20 +30,110 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'gatewayUrl' => env('ECASH_GATEWAY_URL', 'https://checkout.ecash-pay.co'),
+    'terminalKey' => env('ECASH_TERMINAL_KEY', null),
+    'merchantId' => env('ECASH_MERCHANT_ID', null),
+    'merchantSecret' => env('ECASH_MERCHANT_SECRET', null),
 ];
 ```
+## Getting Started
+1. Setup your environment variables
+2. To start the payment process, use the checkout method to create a payment model & generate the payment URL
+3. Once the payment is complete, and the gateway redirects the user to the redirect URL, the payment status changes from PENDING to PROCESSING
+4. Once the gateway calls the callback URL, the payment status Changes from PROCESSING to either FAILED or PAID
+5. On each payment status change, a PaymentStatusUpdated event is fired, you may configure a listener to update the status of your order
 
-Optionally, you can publish the views using
 
-```bash
-php artisan vendor:publish --tag="laravel-ecash-views"
+## Enums
+Enums are in the namespace "Organon\LaravelEcash\Enums"
+```php
+enum Lang: string
+{
+    case AR = 'AR';
+    case EN = 'EN';
+}
 ```
+```php
+enum Currency: string
+{
+    case SYP = 'SYP'; // The only available currency by the gateway so far 
+}
+```
+```php
+enum CheckoutType: string
+{
+    case QR = 'QR';
+    case CARD = 'Card';
+}
+```
+```php
+enum PaymentStatus: string
+{
+    case PENDING = 'pending';
+    case PROCESSING = 'processing';
+    case PAID = 'paid';
+    case FAILED = 'failed';
+}
+```
+## Events
+### PaymentStatusUpdated
+```php
+namespace Organon\LaravelEcash\Events;
 
-## Usage
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Organon\LaravelEcash\Models\EcashPayment;
+
+class PaymentStatusUpdated
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public function __construct(private EcashPayment $paymentModel)
+    {
+    }
+
+    public function getPaymentModel(): EcashPayment
+    {
+        return $this->paymentModel;
+    }
+}
+```
+## Example Usage
+### Checkout
+
 
 ```php
-$laravelEcash = new Organon\LaravelEcash();
-echo $laravelEcash->echoPhrase('Hello, Organon!');
+use App\Http\Controllers\Controller;
+
+use Organon\LaravelEcash\Facades\LaravelEcashClient;
+use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Models\EcashPayment;
+use Organon\LaravelEcash\Enums\CheckoutType;
+use Organon\LaravelEcash\Enums\Lang;
+use Organon\LaravelEcash\Enums\Currency;
+
+class ExampleController extends Controller
+{
+    public function checkout($request)
+    {
+        $paymentDataObject = new PaymentDataObject(CheckoutType::CARD, 100.10);
+
+        $paymentDataObject->setRedirectUrl(route('payment-successful')); //optional
+        $paymentDataObject->setLang(Lang::EN); //optional
+        $paymentDataObject->setCurrency(Currency::SYP); //optional
+
+        $result = LaravelEcashClient::checkout($paymentDataObject);
+
+        /** @var EcashPayment */
+        $paymentModel = $result['model'];
+        $paymentUrl = $result['url'];
+
+        //You may attach the payment model to your order
+
+        return redirect($paymentUrl);
+    }
+}
 ```
 
 ## Testing
@@ -62,22 +142,9 @@ echo $laravelEcash->echoPhrase('Hello, Organon!');
 composer test
 ```
 
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
 ## Credits
 
 - [Mhd Ghaith Alhelwany](https://github.com/MhdGhaithAlhelwany)
-- [All Contributors](../../contributors)
 
 ## License
 
