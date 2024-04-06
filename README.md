@@ -38,10 +38,11 @@ return [
 ```
 ## Getting Started
 1. Setup your environment variables
-2. To start the payment process, use the checkout method to create a payment model & generate the payment URL
-3. Once the payment is complete, and the gateway redirects the user to the redirect URL, the payment status changes from PENDING to PROCESSING
-4. Once the gateway calls the callback URL, the payment status Changes from PROCESSING to either FAILED or PAID
-5. On each payment status change, a PaymentStatusUpdated event is fired, you may configure a listener to update the status of your order
+2. Publish and run the migrations
+3. To start the payment process, use the checkout method to create a payment model & generate the payment URL
+4. Once the payment is complete, and the gateway redirects the user to the redirect URL, the payment status changes from PENDING to PROCESSING
+5. Once the gateway calls the callback URL, the payment status Changes from PROCESSING to either FAILED or PAID
+6. On each payment status change, a PaymentStatusUpdated event is fired, you may configure a listener to update the status of your order
 
 
 ## Enums
