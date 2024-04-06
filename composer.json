@@ -79,13 +79,7 @@
             ],
             "aliases": {
                 "LaravelEcash": "Organon\\LaravelEcash\\Facades\\LaravelEcash"
-            },
-            "dont-discover": [
-                "Organon\\LaravelEcash\\DataObjects",
-                "Organon\\LaravelEcash\\Http",
-                "Organon\\LaravelEcash\\Utilities",
-                "Organon\\LaravelEcash\\Tests"
-            ]
+            }
         }
     },
     "minimum-stability": "dev",
