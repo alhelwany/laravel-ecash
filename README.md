@@ -124,15 +124,11 @@ class ExampleController extends Controller
         $paymentDataObject->setLang(Lang::EN); //optional
         $paymentDataObject->setCurrency(Currency::SYP); //optional
 
-        $result = LaravelEcashClient::checkout($paymentDataObject);
-
-        /** @var EcashPayment */
-        $paymentModel = $result['model'];
-        $paymentUrl = $result['url'];
+        $model = LaravelEcashClient::checkout($paymentDataObject);
 
         //You may attach the payment model to your order
 
-        return redirect($paymentUrl);
+        return redirect($model['checkout_url']);
     }
 }
 ```

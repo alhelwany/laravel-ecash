@@ -17,7 +17,8 @@ class EcashPayment extends Model
         'status',
         'verification_code',
         'transaction_no',
-        'message'
+        'message',
+        'checkout_url'
     ];
 
     protected $casts = [
@@ -34,5 +35,10 @@ class EcashPayment extends Model
     public function getVerificationCode(): ?string
     {
         return $this->verification_code;
+    }
+
+    public function getCheckoutUrl(): string
+    {
+        return $this->checkout_url;
     }
 }

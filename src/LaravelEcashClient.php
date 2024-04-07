@@ -77,27 +77,32 @@ class LaravelEcashClient
      * @param ExtendedPaymentDataObject $extendedPaymentDataObject
      * @return string
      */
-    private function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): string
+    private function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): void
     {
-        return $this->paymentUrlGenerator->generateUrl($extendedPaymentDataObject);
+        $extendedPaymentDataObject->setCheckoutUrl($this->paymentUrlGenerator->generateUrl($extendedPaymentDataObject));
+    }
+
+    private function addGeneratedUrlToModel($extendedPaymentDataObject): void
+    {
+        $this->paymentModelUtility->updateCheckoutUrl($extendedPaymentDataObject);
     }
 
     /**
      * Starts the transaction process
+     * Creates EcashPayment model and generates the checkout url
      *
      * @param PaymentDataObject $paymentDataObject
-     * @return array ['EcashPayment model', 'checkoutUrl']
+     * @return EcashPayment
      */
-    public function checkout(PaymentDataObject $paymentDataObject): array
+    public function checkout(PaymentDataObject $paymentDataObject): EcashPayment
     {
         $extendedPaymentDataObject = new ExtendedPaymentDataObject($paymentDataObject);
         $model = $this->createModel($extendedPaymentDataObject);
-        $url = $this->generateUrl($extendedPaymentDataObject);
+        $this->generateUrl($extendedPaymentDataObject);
+        $this->addGeneratedUrlToModel($extendedPaymentDataObject);
+        $model->refresh();
 
-        return [
-            'model' => $model,
-            'url' => $url
-        ];
+        return $model;
     }
 
     /**

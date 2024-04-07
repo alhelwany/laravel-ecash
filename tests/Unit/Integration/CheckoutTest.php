@@ -24,15 +24,14 @@ it('can checkout', function () {
     );
     $checkoutType = CheckoutType::QR;
     $amount = 10.10;
-    $result = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
+    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
-    $result['model']->refresh();
-    $this->expect($result['url'])->toBe('https://checkout.ecash-pay.co/checkout/QR/12345/54321/068391DCF5AA8CF7CDB26092C43CA6FE/SYP/10.1/AR/1/' . $encodedRedirectUrl . '/' . $encodedCallbackUrl);
-    $this->expect($result['model']['amount'])->toBe($amount);
-    $this->expect($result['model']['checkout_type'])->toBe($checkoutType);
-    $this->expect($result['model']['status'])->toBe(PaymentStatus::PENDING);
-    $this->expect($result['model']['verification_code'])->toBe('068391DCF5AA8CF7CDB26092C43CA6FE');
-    $this->expect($result['model']['currency'])->toBe(Currency::SYP);
+    $this->expect($model['checkout_url'])->toBe('https://checkout.ecash-pay.co/checkout/QR/12345/54321/068391DCF5AA8CF7CDB26092C43CA6FE/SYP/10.1/AR/1/' . $encodedRedirectUrl . '/' . $encodedCallbackUrl);
+    $this->expect($model['amount'])->toBe($amount);
+    $this->expect($model['checkout_type'])->toBe($checkoutType);
+    $this->expect($model['status'])->toBe(PaymentStatus::PENDING);
+    $this->expect($model['verification_code'])->toBe('068391DCF5AA8CF7CDB26092C43CA6FE');
+    $this->expect($model['currency'])->toBe(Currency::SYP);
 
 
     $paymentDataObject = new PaymentDataObject(CheckoutType::CARD, $amount);
@@ -47,7 +46,7 @@ it('can checkout', function () {
     );
     $paymentDataObject->setRedirectUrl('https://www.google.com');
 
-    $result = LaravelEcashClient::checkout($paymentDataObject);
-    $this->expect($result['url'])->toBe('https://checkout.ecash-pay.co/checkout/Card/12345/54321/9AEAC03A4EFD003D036DB05F658816B5/SYP/10.1/EN/2/' . $encodedRedirectUrl . '/' . $encodedCallbackUrl);
+    $model = LaravelEcashClient::checkout($paymentDataObject);
+    $this->expect($model['checkout_url'])->toBe('https://checkout.ecash-pay.co/checkout/Card/12345/54321/9AEAC03A4EFD003D036DB05F658816B5/SYP/10.1/EN/2/' . $encodedRedirectUrl . '/' . $encodedCallbackUrl);
     $this->expect(EcashPayment::count())->toBe(2);
 });

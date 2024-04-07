@@ -42,4 +42,21 @@ class PaymentModelUtility
                 'verification_code' => $extendedPaymentDataObject->getVerificationCode()
             ]);
     }
+
+    /**
+     * Updates checkout_url in the EcashPayment Model
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return void
+     */
+    public function updateCheckoutUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): void
+    {
+        EcashPayment::query()
+            ->where([
+                'id' => $extendedPaymentDataObject->getId()
+            ])
+            ->update([
+                'checkout_url' => $extendedPaymentDataObject->getCheckoutUrl()
+            ]);
+    }
 }

@@ -9,7 +9,7 @@ it('can callback with success', function () {
 
     $checkoutType = CheckoutType::QR;
     $amount = 10.10;
-    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount))['model'];
+    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];
@@ -38,7 +38,7 @@ it('can callback with failure', function () {
 
     $checkoutType = CheckoutType::QR;
     $amount = 10.10;
-    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount))['model'];
+    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];
@@ -66,7 +66,7 @@ it('can\'t callback with invalid token', function () {
 
     $checkoutType = CheckoutType::QR;
     $amount = 10.10;
-    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount))['model'];
+    $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];

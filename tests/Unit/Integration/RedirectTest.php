@@ -16,10 +16,10 @@ it('can redirect', function () {
     $paymentDataObject = new PaymentDataObject($checkoutType, $amount);
     $paymentDataObject->setRedirectUrl('https://www.google.com');
 
-    $result = LaravelEcashClient::checkout($paymentDataObject);
+    $model = LaravelEcashClient::checkout($paymentDataObject);
     expect(EcashPayment::first()->status)->toBe(PaymentStatus::PENDING);
 
-    $encodedRedirectUrlFromResult = explode('/', $result['url'])[12];
+    $encodedRedirectUrlFromResult = explode('/', $model['checkout_url'])[12];
     $response = $this->get($urlEncoder->decode($encodedRedirectUrlFromResult));
     expect($response->status())->toBe(302);
     $response->assertRedirect('https://www.google.com');
