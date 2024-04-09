@@ -1,6 +1,7 @@
 # Laravel Payment Gateway for Ecash (Syria)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
+[![Total Downloads](https://img.shields.io/packagist/dt/organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/organon/laravel-ecash)
 
 Simplify the integration of Ecash payments into your Laravel applications. This package offers a streamlined setup and intuitive API to process payments quickly and securely. 
 
