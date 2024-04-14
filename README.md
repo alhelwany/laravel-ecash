@@ -79,6 +79,17 @@ enum PaymentStatus: string
     case FAILED = 'failed';
 }
 ```
+
+## Exceptions
+### InvalidAmountException
+Thrown when the checkout function is called with negative or 0 amount. 
+
+### InvalidConfigurationException
+Thrown when trying to use the package before setting up the .env variables
+
+
+
+
 ## Events
 ### PaymentStatusUpdated
 ```php
