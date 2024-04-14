@@ -3,10 +3,21 @@
 namespace Organon\LaravelEcash\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
 use Organon\LaravelEcash\Enums\CheckoutType;
 use Organon\LaravelEcash\Enums\Currency;
 use Organon\LaravelEcash\Enums\PaymentStatus;
+
+/**
+ * @property float $amount
+ * @property CheckoutType $checkout_type
+ * @property Currency $currency
+ * @property PaymentStatus $status
+ * @property string $verification_code
+ * @property string $transaction_no
+ * @property string $message                                                                                                                                                                                                                              $name
+ * @property string $checkout_url
+ * 
+ */
 
 class EcashPayment extends Model
 {

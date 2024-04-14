@@ -9,7 +9,11 @@ use Organon\LaravelEcash\Models\EcashPayment;
 
 class RedirectController
 {
-    public function __invoke(RedirectRequest $request)
+    /**
+     * @param RedirectRequest $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function __invoke(RedirectRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $model = EcashPayment::query()->find($request->getPaymentId());
         if (is_null($model) || $model->getVerificationCode() != $request->getToken())

@@ -5,17 +5,22 @@ namespace Organon\LaravelEcash\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Organon\LaravelEcash\Models\EcashPayment;
 
 class PaymentStatusUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(private EcashPayment $paymentModel)
+    /**
+     * @param \Organon\LaravelEcash\Models\EcashPayment $paymentModel
+     */
+    public function __construct(private \Organon\LaravelEcash\Models\EcashPayment $paymentModel)
     {
     }
 
-    public function getPaymentModel(): EcashPayment
+    /**
+     * @return \Organon\LaravelEcash\Models\EcashPayment
+     */
+    public function getPaymentModel(): \Organon\LaravelEcash\Models\EcashPayment
     {
         return $this->paymentModel;
     }

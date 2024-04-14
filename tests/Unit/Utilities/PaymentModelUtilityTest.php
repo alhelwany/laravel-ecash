@@ -15,14 +15,14 @@ it('can create models', function () use ($paymentModelUtility) {
     $checkoutType = CheckoutType::CARD;
 
     $extendedPaymentDataObject = new ExtendedPaymentDataObject(new PaymentDataObject($checkoutType, $amount));
-    $this->expect(EcashPayment::count())->toBe(0);
+    expect(EcashPayment::count())->toBe(0);
     $paymentModelUtility->create($extendedPaymentDataObject);
-    $this->expect(EcashPayment::count())->toBe(1);
+    expect(EcashPayment::count())->toBe(1);
     $model = EcashPayment::first();
-    $this->expect($model->amount)->toBe($amount);
-    $this->expect($model->checkout_type)->toBe($checkoutType);
-    $this->expect($model->verificationCode)->toBe(null);
-    $this->expect($model->status)->toBe(PaymentStatus::PENDING);
+    expect($model->amount)->toBe($amount);
+    expect($model->checkout_type)->toBe($checkoutType);
+    expect($model->verification_code)->toBe(null);
+    expect($model->status)->toBe(PaymentStatus::PENDING);
 });
 
 it('can update verification code', function () use ($paymentModelUtility) {
@@ -36,5 +36,5 @@ it('can update verification code', function () use ($paymentModelUtility) {
     $paymentModelUtility->updateVerificationCode($extendedPaymentDataObject);
 
     $model = EcashPayment::first();
-    $this->expect($model->verification_code)->toBe($verificationCode);
+    expect($model->verification_code)->toBe($verificationCode);
 });

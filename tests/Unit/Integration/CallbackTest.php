@@ -5,17 +5,19 @@ use Organon\LaravelEcash\Enums\CheckoutType;
 use Organon\LaravelEcash\Enums\PaymentStatus;
 use Organon\LaravelEcash\Facades\LaravelEcashClient;
 
+use function Pest\Laravel\postJson;
+
 it('can callback with success', function () {
 
     $checkoutType = CheckoutType::QR;
-    $amount = 10.10;
+    $amount = 10.11;
     $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];
     $message = "success";
 
-    $response = $this->post(route('ecash.callback'), [
+    $response = postJson(route('ecash.callback'), [
         'Token' => strtoupper(md5(config()->get('ecash.merchantId') . config()->get('ecash.merchantSecret') . $transactionNo . $amount . $orderRef)),
         'Amount' => $amount,
         'OrderRef' => $orderRef,
@@ -24,27 +26,27 @@ it('can callback with success', function () {
         'Message' => $message
     ]);
 
-    $this->expect($response->status())->toBe(200);
+    expect($response->status())->toBe(200);
 
     $model->refresh();
 
-    $this->expect($model->status)->toBe(PaymentStatus::PAID);
-    $this->expect($model->transaction_no)->toBe($transactionNo);
-    $this->expect($model->message)->toBe($message);
+    expect($model->status)->toBe(PaymentStatus::PAID);
+    expect($model->transaction_no)->toBe($transactionNo);
+    expect($model->message)->toBe($message);
 });
 
 
 it('can callback with failure', function () {
 
     $checkoutType = CheckoutType::QR;
-    $amount = 10.10;
+    $amount = 10.11;
     $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];
     $message = "success";
 
-    $response = $this->post(route('ecash.callback'), [
+    $response = postJson(route('ecash.callback'), [
         'Token' => strtoupper(md5(config()->get('ecash.merchantId') . config()->get('ecash.merchantSecret') . $transactionNo . $amount . $orderRef)),
         'Amount' => $amount,
         'OrderRef' => $orderRef,
@@ -53,26 +55,26 @@ it('can callback with failure', function () {
         'Message' => $message
     ]);
 
-    $this->expect($response->status())->toBe(200);
+    expect($response->status())->toBe(200);
 
     $model->refresh();
 
-    $this->expect($model->status)->toBe(PaymentStatus::FAILED);
-    $this->expect($model->transaction_no)->toBe($transactionNo);
-    $this->expect($model->message)->toBe($message);
+    expect($model->status)->toBe(PaymentStatus::FAILED);
+    expect($model->transaction_no)->toBe($transactionNo);
+    expect($model->message)->toBe($message);
 });
 
 it('can\'t callback with invalid token', function () {
 
     $checkoutType = CheckoutType::QR;
-    $amount = 10.10;
+    $amount = 10.11;
     $model = LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
 
     $transactionNo = "1";
     $orderRef = $model['id'];
     $message = "success";
 
-    $response = $this->post(route('ecash.callback'), [
+    $response = postJson(route('ecash.callback'), [
         'Token' => strtoupper(md5(config()->get('ecash.merchantId') . config()->get('ecash.merchantSecret') . $transactionNo . $amount . $orderRef . "Hello World")),
         'Amount' => $amount,
         'OrderRef' => $orderRef,
@@ -81,11 +83,11 @@ it('can\'t callback with invalid token', function () {
         'Message' => $message
     ]);
 
-    $this->expect($response->status())->toBe(302);
+    expect($response->status())->toBe(422);
 
     $model->refresh();
 
-    $this->expect($model->status)->toBe(PaymentStatus::PENDING);
-    $this->expect($model->transaction_no)->toBe(null);
-    $this->expect($model->message)->toBe(null);
+    expect($model->status)->toBe(PaymentStatus::PENDING);
+    expect($model->transaction_no)->toBe(null);
+    expect($model->message)->toBe(null);
 });

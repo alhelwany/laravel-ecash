@@ -10,6 +10,10 @@ class VerificationCodeGenerator
 
     private string $merchantSecret;
 
+    /**
+     * @param string $merchantId
+     * @param string $merchantSecret
+     */
     public function __construct(string $merchantId, string $merchantSecret)
     {
         $this->merchantId = $merchantId;

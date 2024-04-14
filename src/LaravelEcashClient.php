@@ -38,7 +38,7 @@ class LaravelEcashClient
             new UrlEncoder
         );
         $this->verificationCodeGenerator = new VerificationCodeGenerator($merchantId, $merchantSecret);
-        $this->paymentModelUtility = new PaymentModelUtility($this->verificationCodeGenerator);
+        $this->paymentModelUtility = new PaymentModelUtility;
         $this->callbackTokenVerifier = new CallbackTokenVerifier($merchantId, $merchantSecret);
     }
 
@@ -85,7 +85,7 @@ class LaravelEcashClient
      * Generates the checkout URL from ExtendedPaymentDataObject
      *
      * @param ExtendedPaymentDataObject $extendedPaymentDataObject
-     * @return string
+     * @return void
      */
     private function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): void
     {
@@ -102,8 +102,8 @@ class LaravelEcashClient
      * Creates EcashPayment model and generates the checkout url
      *
      * @param PaymentDataObject $paymentDataObject
-     * @return EcashPayment
      * @throws InvalidAmountException
+     * @return EcashPayment
      */
     public function checkout(PaymentDataObject $paymentDataObject): EcashPayment
     {
@@ -124,7 +124,7 @@ class LaravelEcashClient
      *
      * @param string $token
      * @param string $transactionNo
-     * @param float $amount
+     * @param string $amount
      * @param integer $orderRef
      * @return boolean
      */

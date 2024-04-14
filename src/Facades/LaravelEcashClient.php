@@ -5,7 +5,9 @@ namespace Organon\LaravelEcash\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Organon\LaravelEcash\LaravelEcash
+ * @method static \Organon\LaravelEcash\Models\EcashPayment checkout(\Organon\LaravelEcash\DataObjects\PaymentDataObject $paymentDataObject)
+ * @method static boolean verifyCallbackToken(string $token, string $transactionNo, string $amount, int $orderRef)
+ * @see \Organon\LaravelEcash\LaravelEcashClient
  */
 class LaravelEcashClient extends Facade
 {

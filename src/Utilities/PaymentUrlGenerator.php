@@ -16,6 +16,13 @@ class PaymentUrlGenerator
 
     private UrlEncoder $urlEncoder;
 
+    /**
+     * @param string $gatewayUrl
+     * @param string $terminalKey
+     * @param string $merchantId
+     * @param ArrayToUrl $arrayToUrl
+     * @param UrlEncoder $urlEncoder
+     */
     public function __construct(string $gatewayUrl, string $terminalKey, string $merchantId, ArrayToUrl $arrayToUrl, UrlEncoder $urlEncoder)
     {
         $this->gatewayUrl = $gatewayUrl;
@@ -27,6 +34,9 @@ class PaymentUrlGenerator
 
     /**
      * Generates Payment Url to be redirected to
+     *
+     * @param ExtendedPaymentDataObject $extendedPaymentDataObject
+     * @return string
      */
     public function generateUrl(ExtendedPaymentDataObject $extendedPaymentDataObject): string
     {

@@ -7,6 +7,7 @@ use Organon\LaravelEcash\Facades\LaravelEcashClient;
 use Organon\LaravelEcash\Models\EcashPayment;
 use Organon\LaravelEcash\Utilities\UrlEncoder;
 
+use function Pest\Laravel\getJson;
 
 it('can redirect', function () {
 
@@ -20,7 +21,7 @@ it('can redirect', function () {
     expect(EcashPayment::first()->status)->toBe(PaymentStatus::PENDING);
 
     $encodedRedirectUrlFromResult = explode('/', $model['checkout_url'])[12];
-    $response = $this->get($urlEncoder->decode($encodedRedirectUrlFromResult));
+    $response = getJson($urlEncoder->decode($encodedRedirectUrlFromResult));
     expect($response->status())->toBe(302);
     $response->assertRedirect('https://www.google.com');
     expect(EcashPayment::first()->status)->toBe(PaymentStatus::PROCESSING);

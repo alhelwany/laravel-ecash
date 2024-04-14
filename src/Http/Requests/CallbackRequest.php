@@ -11,9 +11,9 @@ class CallbackRequest extends FormRequest
     /**
      * Defines validation rules
      *
-     * @return void
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'IsSuccess' => ['required', 'boolean'],
@@ -27,32 +27,50 @@ class CallbackRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return boolean
+     */
     public function getIsSuccess(): bool
     {
         return $this->input('IsSuccess');
     }
 
+    /**
+     * @return int
+     */
     public function getOrderRef(): int
     {
         return $this->input('OrderRef');
     }
 
+    /**
+     * @return string
+     */
     public function getTransactionNo(): string
     {
         return $this->input("TransactionNo");
     }
 
+    /**
+     * @return string
+     */
     public function getToken(): string
     {
         return $this->input('Token');
     }
 
+    /**
+     * @return string
+     */
     public function getAmount(): string
     {
         return $this->input("Amount");
     }
 
-    public function getMessage(): string | null
+    /**
+     * @return string|null
+     */
+    public function getMessage(): ?string
     {
         return $this->input("Message");
     }

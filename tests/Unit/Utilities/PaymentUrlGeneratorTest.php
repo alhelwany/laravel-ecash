@@ -33,7 +33,7 @@ it('generates proper urls', function () {
 
     $paymentDataObject = new ExtendedPaymentDataObject(new PaymentDataObject(CheckoutType::CARD, 420.69));
     $paymentDataObject->setVerificationCode('123');
-    $paymentDataObject->setId('1');
+    $paymentDataObject->setId(1);
     $generatedUrl = $paymentUrlGenerator->generateUrl($paymentDataObject);
     expect($generatedUrl)->toBe('https://checkout.ecash-pay.co/checkout/Card/12345/54321/123/SYP/420.69/AR/1/' . $encodedRedirectUrl . '/' . $encodedCallbackUrl);
 });

@@ -15,13 +15,19 @@ class CallbackTokenValid implements ValidationRule
 
     private CallbackRequest $request;
 
+    /**
+     * @param CallbackRequest $request
+     */
     public function __construct(CallbackRequest $request)
     {
         $this->request = $request;
     }
 
     /**
-     * Run the validation rule.
+     * @param string $attribute
+     * @param mixed $value
+     * @param Closure $fail
+     * @return void
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {

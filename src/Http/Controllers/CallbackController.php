@@ -9,7 +9,11 @@ use Organon\LaravelEcash\Models\EcashPayment;
 
 class CallbackController
 {
-    public function __invoke(CallbackRequest $request)
+    /**
+     * @param CallbackRequest $request
+     * @return void
+     */
+    public function __invoke(CallbackRequest $request): void
     {
         $paymentModel = EcashPayment::query()->find($request->getOrderRef());
         $paymentModel->update([

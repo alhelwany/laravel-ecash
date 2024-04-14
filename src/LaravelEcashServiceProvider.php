@@ -8,6 +8,10 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelEcashServiceProvider extends PackageServiceProvider
 {
+    /**
+     * @param Package $package
+     * @return void
+     */
     public function configurePackage(Package $package): void
     {
         $package
