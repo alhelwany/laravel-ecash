@@ -2,6 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
 [![Total Downloads](https://img.shields.io/packagist/dt/organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/organon/laravel-ecash)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/mhdghaithalhelwany/laravel-ecash/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mhdghaithalhelwany/laravel-ecash/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/mhdghaithalhelwany/laravel-ecash/phpstan.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/MhdGhaithAlhelwany/laravel-ecash/actions/workflows/phpstan.yml?query=workflow%3Aphpstan+branch%3Amain)
 
 Simplify the integration of Ecash payments into your Laravel applications. This package offers a streamlined setup and intuitive API to process payments quickly and securely. 
 
