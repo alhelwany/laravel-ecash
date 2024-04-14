@@ -14,7 +14,7 @@ class CallbackTokenVerifier
         $this->merchantSecret = $merchantSecret;
     }
 
-    public function verify(string $token, string $transactionNo, float $amount, int $orderRef): string
+    public function verify(string $token, string $transactionNo, string $amount, int $orderRef): string
     {
         return strtoupper($token) == strtoupper(md5($this->merchantId . $this->merchantSecret . $transactionNo . $amount . $orderRef));
     }

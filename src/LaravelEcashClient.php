@@ -114,7 +114,7 @@ class LaravelEcashClient
      * @param integer $orderRef
      * @return boolean
      */
-    public function verifyCallbackToken(string $token, string $transactionNo, float $amount, int $orderRef): bool
+    public function verifyCallbackToken(string $token, string $transactionNo, string $amount, int $orderRef): bool
     {
         return $this->callbackTokenVerifier->verify($token, $transactionNo, $amount, $orderRef);
     }

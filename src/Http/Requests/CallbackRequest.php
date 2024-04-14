@@ -8,12 +8,17 @@ use Organon\LaravelEcash\Http\Rules\CallbackTokenValid;
 class CallbackRequest extends FormRequest
 {
 
+    /**
+     * Defines validation rules
+     *
+     * @return void
+     */
     public function rules()
     {
         return [
             'IsSuccess' => ['required', 'boolean'],
-            'Message' => ['required'],
-            'OrderRef' => ['required'],
+            'Message' => ['nullable'],
+            'OrderRef' => ['required', 'exists:ecash_payments,id'],
             'TransactionNo' => ['required'],
             'Amount' => ['required', 'numeric'],
             'Token' => [
@@ -42,12 +47,12 @@ class CallbackRequest extends FormRequest
         return $this->input('Token');
     }
 
-    public function getAmount(): float
+    public function getAmount(): string
     {
         return $this->input("Amount");
     }
 
-    public function getMessage(): string
+    public function getMessage(): string | null
     {
         return $this->input("Message");
     }

@@ -12,10 +12,17 @@ class RedirectController
     public function __invoke(RedirectRequest $request)
     {
         $model = EcashPayment::query()->find($request->getPaymentId());
-        if (is_null($model) || $model->getVerificationCode() != $request->getToken() || $model->status != PaymentStatus::PENDING)
+        if (is_null($model) || $model->getVerificationCode() != $request->getToken())
             abort(403);
-        $model->update(['status' => PaymentStatus::PROCESSING]);
-        event(new PaymentStatusUpdated($model));
+
+        // only updating status to processing  if it's pending 
+        // The callback request that changes the status to paid or failed may happen before the redirect
+
+        if ($model->status == PaymentStatus::PENDING) {
+            $model->update(['status' => PaymentStatus::PROCESSING]);
+            event(new PaymentStatusUpdated($model));
+        }
+
         return redirect($request->getRedirectUrl());
     }
 }

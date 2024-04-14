@@ -10,7 +10,7 @@ class RedirectRequest extends FormRequest
     public function rules()
     {
         return [
-            'paymentId' => ['required', 'numeric'],
+            'paymentId' => ['required', 'numeric', 'exists:ecash_payments,id'],
             'redirect_url' => ['required', 'url'],
             'token' => ['required', 'string']
         ];
