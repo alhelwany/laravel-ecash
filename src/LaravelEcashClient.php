@@ -4,6 +4,8 @@ namespace Organon\LaravelEcash;
 
 use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
 use Organon\LaravelEcash\DataObjects\PaymentDataObject;
+use Organon\LaravelEcash\Exceptions\InvalidAmountException;
+use Organon\LaravelEcash\Exceptions\InvalidConfigurationException;
 use Organon\LaravelEcash\Models\EcashPayment;
 use Organon\LaravelEcash\Utilities\ArrayToUrl;
 use Organon\LaravelEcash\Utilities\CallbackTokenVerifier;
@@ -47,6 +49,14 @@ class LaravelEcashClient
      */
     public static function getInstance(): self
     {
+        if (
+            is_null(config('ecash.gatewayUrl')) ||
+            is_null(config('ecash.terminalKey')) ||
+            is_null(config('ecash.merchantId')) ||
+            is_null(config('ecash.merchantSecret'))
+        )
+            throw new InvalidConfigurationException;
+
         return new self(
             config('ecash.gatewayUrl'),
             config('ecash.terminalKey'),
@@ -93,9 +103,13 @@ class LaravelEcashClient
      *
      * @param PaymentDataObject $paymentDataObject
      * @return EcashPayment
+     * @throws InvalidAmountException
      */
     public function checkout(PaymentDataObject $paymentDataObject): EcashPayment
     {
+        if ($paymentDataObject->getAmount() <= 0)
+            throw new InvalidAmountException;
+
         $extendedPaymentDataObject = new ExtendedPaymentDataObject($paymentDataObject);
         $model = $this->createModel($extendedPaymentDataObject);
         $this->generateUrl($extendedPaymentDataObject);
