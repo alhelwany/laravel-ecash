@@ -1,6 +1,6 @@
 {
     "name": "organon/laravel-ecash",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Laravel Payment Gateway for Ecash (Syria)",
     "keywords": [
         "Mhd Ghaith Alhelwany",
