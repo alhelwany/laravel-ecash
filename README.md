@@ -49,7 +49,7 @@ return [
 
 
 ## Enums
-Enums are in the namespace "Organon\LaravelEcash\Enums"
+### Enums are in the namespace "Organon\LaravelEcash\Enums"
 ```php
 enum Lang: string
 {
@@ -114,6 +114,15 @@ class PaymentStatusUpdated
     }
 }
 ```
+
+
+## Important Note
+
+``` 
+The EcashPayment Model uses id of type UUID as a primary key
+```
+
+
 ## Example Usage
 ### Checkout
 
@@ -140,8 +149,7 @@ class ExampleController extends Controller
 
         $model = LaravelEcashClient::checkout($paymentDataObject);
 
-        //You may attach the payment model to your order
-
+        // You may attach the EcashPayment model to your order
         return redirect($model['checkout_url']);
     }
 }

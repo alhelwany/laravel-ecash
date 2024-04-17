@@ -2,6 +2,7 @@
 
 namespace Organon\LaravelEcash\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Organon\LaravelEcash\Enums\CheckoutType;
 use Organon\LaravelEcash\Enums\Currency;
@@ -21,6 +22,8 @@ use Organon\LaravelEcash\Enums\PaymentStatus;
 
 class EcashPayment extends Model
 {
+    use HasUuids;
+
     public $fillable = [
         'amount',
         'checkout_type',
