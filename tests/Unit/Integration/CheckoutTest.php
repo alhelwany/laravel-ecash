@@ -5,6 +5,8 @@ use Organon\LaravelEcash\Enums\CheckoutType;
 use Organon\LaravelEcash\Enums\Currency;
 use Organon\LaravelEcash\Enums\Lang;
 use Organon\LaravelEcash\Enums\PaymentStatus;
+use Organon\LaravelEcash\Exceptions\InvalidAmountException;
+use Organon\LaravelEcash\Exceptions\InvalidConfigurationException;
 use Organon\LaravelEcash\Facades\LaravelEcashClient;
 use Organon\LaravelEcash\Models\EcashPayment;
 use Organon\LaravelEcash\Utilities\UrlEncoder;
@@ -63,3 +65,16 @@ it('can checkout', function () {
 
     expect(EcashPayment::count())->toBe(2);
 });
+
+
+it('throws exception when using checkout with invalid amount', function () {
+    $checkoutType = CheckoutType::QR;
+    $amount = -10.10;
+    LaravelEcashClient::checkout(new PaymentDataObject($checkoutType, $amount));
+})->throws(InvalidAmountException::class);
+
+
+it('throws exception when using checkout before setting up the configurations', function () {
+    config()->set('ecash.merchantId', null);
+    LaravelEcashClient::checkout(new PaymentDataObject(CheckoutType::QR, 10));
+})->throws(InvalidConfigurationException::class);

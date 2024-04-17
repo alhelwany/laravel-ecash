@@ -43,6 +43,17 @@ class LaravelEcashClient
     }
 
     /**
+     * Checks if string is empty
+     *
+     * @param string|null $value
+     * @return boolean
+     */
+    private static function isEmpty(string|null $value): bool
+    {
+        return is_null($value) || $value == "";
+    }
+
+    /**
      * Returns instance of self using the configs
      *
      * @return self
@@ -50,10 +61,10 @@ class LaravelEcashClient
     public static function getInstance(): self
     {
         if (
-            is_null(config('ecash.gatewayUrl')) ||
-            is_null(config('ecash.terminalKey')) ||
-            is_null(config('ecash.merchantId')) ||
-            is_null(config('ecash.merchantSecret'))
+            self::isEmpty(config('ecash.gatewayUrl')) ||
+            self::isEmpty(config('ecash.terminalKey')) ||
+            self::isEmpty(config('ecash.merchantId')) ||
+            self::isEmpty(config('ecash.merchantSecret'))
         )
             throw new InvalidConfigurationException;
 
