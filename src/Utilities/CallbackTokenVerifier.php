@@ -24,10 +24,10 @@ class CallbackTokenVerifier
      * @param string $token
      * @param string $transactionNo
      * @param string $amount
-     * @param integer $orderRef
+     * @param string $orderRef
      * @return boolean
      */
-    public function verify(string $token, string $transactionNo, string $amount, int $orderRef): bool
+    public function verify(string $token, string $transactionNo, string $amount, string $orderRef): bool
     {
         return strtoupper($token) == strtoupper(md5($this->merchantId . $this->merchantSecret . $transactionNo . $amount . $orderRef));
     }

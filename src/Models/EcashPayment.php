@@ -41,7 +41,7 @@ class EcashPayment extends Model
         'status' => PaymentStatus::class,
     ];
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

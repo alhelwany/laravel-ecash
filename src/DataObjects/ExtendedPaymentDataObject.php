@@ -4,7 +4,7 @@ namespace Organon\LaravelEcash\DataObjects;
 
 class ExtendedPaymentDataObject extends PaymentDataObject
 {
-    private int $id;
+    private string $id;
     private string  $verificationCode;
     private string $checkout_url;
 
@@ -31,10 +31,10 @@ class ExtendedPaymentDataObject extends PaymentDataObject
     }
 
     /**
-     * @param integer $id
+     * @param string $id
      * @return void
      */
-    public function setId(int $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
@@ -48,9 +48,9 @@ class ExtendedPaymentDataObject extends PaymentDataObject
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

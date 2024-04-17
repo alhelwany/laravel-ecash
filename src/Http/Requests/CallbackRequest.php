@@ -36,9 +36,9 @@ class CallbackRequest extends FormRequest
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getOrderRef(): int
+    public function getOrderRef(): string
     {
         return $this->input('OrderRef');
     }

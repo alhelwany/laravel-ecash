@@ -14,7 +14,7 @@ class RedirectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'paymentId' => ['required', 'numeric', 'exists:ecash_payments,id'],
+            'paymentId' => ['required', 'exists:ecash_payments,id'],
             'redirect_url' => ['required', 'url'],
             'token' => ['required', 'string']
         ];
@@ -37,9 +37,9 @@ class RedirectRequest extends FormRequest
     }
 
     /**
-     * @return integer
+     * @return string
      */
-    public function getPaymentId(): int
+    public function getPaymentId(): string
     {
         return $this->input('paymentId');
     }
