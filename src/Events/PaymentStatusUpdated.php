@@ -1,6 +1,6 @@
 <?php
 
-namespace Organon\LaravelEcash\Events;
+namespace Alhelwany\LaravelEcash\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -11,16 +11,16 @@ class PaymentStatusUpdated
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @param \Organon\LaravelEcash\Models\EcashPayment $paymentModel
+     * @param \Alhelwany\LaravelEcash\Models\EcashPayment $paymentModel
      */
-    public function __construct(private \Organon\LaravelEcash\Models\EcashPayment $paymentModel)
+    public function __construct(private \Alhelwany\LaravelEcash\Models\EcashPayment $paymentModel)
     {
     }
 
     /**
-     * @return \Organon\LaravelEcash\Models\EcashPayment
+     * @return \Alhelwany\LaravelEcash\Models\EcashPayment
      */
-    public function getPaymentModel(): \Organon\LaravelEcash\Models\EcashPayment
+    public function getPaymentModel(): \Alhelwany\LaravelEcash\Models\EcashPayment
     {
         return $this->paymentModel;
     }

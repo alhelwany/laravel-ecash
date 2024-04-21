@@ -1,10 +1,10 @@
 <?php
 
-namespace Organon\LaravelEcash\Utilities;
+namespace Alhelwany\LaravelEcash\Utilities;
 
-use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use Organon\LaravelEcash\Enums\PaymentStatus;
-use Organon\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
 
 class PaymentModelUtility
 {

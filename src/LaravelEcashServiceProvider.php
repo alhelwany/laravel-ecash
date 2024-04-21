@@ -1,6 +1,6 @@
 <?php
 
-namespace Organon\LaravelEcash;
+namespace Alhelwany\LaravelEcash;
 
 use Illuminate\Container\Container;
 use Spatie\LaravelPackageTools\Package;

@@ -1,7 +1,7 @@
 # Laravel Payment Gateway for Ecash (Syria)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/Organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/Organon/laravel-ecash)
-[![Total Downloads](https://img.shields.io/packagist/dt/organon/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/organon/laravel-ecash)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/alhelwany/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/alhelwany/laravel-ecash)
+[![Total Downloads](https://img.shields.io/packagist/dt/alhelwany/laravel-ecash.svg?style=flat-square)](https://packagist.org/packages/alhelwany/laravel-ecash)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/mhdghaithalhelwany/laravel-ecash/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mhdghaithalhelwany/laravel-ecash/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/mhdghaithalhelwany/laravel-ecash/phpstan.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/MhdGhaithAlhelwany/laravel-ecash/actions/workflows/phpstan.yml?query=workflow%3Aphpstan+branch%3Amain)
 
@@ -13,7 +13,7 @@ Simplify the integration of Ecash payments into your Laravel applications. This 
 You can install the package via composer:
 
 ```bash
-composer require organon/laravel-ecash
+composer require alhelwany/laravel-ecash
 ```
 
 You can publish and run the migrations with:
@@ -49,7 +49,7 @@ return [
 
 
 ## Enums
-### Enums are in the namespace "Organon\LaravelEcash\Enums"
+### Enums are in the namespace "Alhelwany\LaravelEcash\Enums"
 ```php
 enum Lang: string
 {
@@ -93,12 +93,12 @@ Thrown when trying to use the package before setting up the .env variables
 ## Events
 ### PaymentStatusUpdated
 ```php
-namespace Organon\LaravelEcash\Events;
+namespace Alhelwany\LaravelEcash\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Organon\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
 
 class PaymentStatusUpdated
 {
@@ -130,12 +130,12 @@ The EcashPayment Model uses id of type UUID as a primary key
 ```php
 use App\Http\Controllers\Controller;
 
-use Organon\LaravelEcash\Facades\LaravelEcashClient;
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
-use Organon\LaravelEcash\Models\EcashPayment;
-use Organon\LaravelEcash\Enums\CheckoutType;
-use Organon\LaravelEcash\Enums\Lang;
-use Organon\LaravelEcash\Enums\Currency;
+use Alhelwany\LaravelEcash\Facades\LaravelEcashClient;
+use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Enums\CheckoutType;
+use Alhelwany\LaravelEcash\Enums\Lang;
+use Alhelwany\LaravelEcash\Enums\Currency;
 
 class ExampleController extends Controller
 {

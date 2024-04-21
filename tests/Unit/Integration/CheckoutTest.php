@@ -1,15 +1,15 @@
 <?php
 
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
-use Organon\LaravelEcash\Enums\CheckoutType;
-use Organon\LaravelEcash\Enums\Currency;
-use Organon\LaravelEcash\Enums\Lang;
-use Organon\LaravelEcash\Enums\PaymentStatus;
-use Organon\LaravelEcash\Exceptions\InvalidAmountException;
-use Organon\LaravelEcash\Exceptions\InvalidConfigurationException;
-use Organon\LaravelEcash\Facades\LaravelEcashClient;
-use Organon\LaravelEcash\Models\EcashPayment;
-use Organon\LaravelEcash\Utilities\UrlEncoder;
+use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Enums\CheckoutType;
+use Alhelwany\LaravelEcash\Enums\Currency;
+use Alhelwany\LaravelEcash\Enums\Lang;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Exceptions\InvalidAmountException;
+use Alhelwany\LaravelEcash\Exceptions\InvalidConfigurationException;
+use Alhelwany\LaravelEcash\Facades\LaravelEcashClient;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
 
 
 it('can checkout', function () {

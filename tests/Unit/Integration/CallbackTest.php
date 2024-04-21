@@ -1,9 +1,9 @@
 <?php
 
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
-use Organon\LaravelEcash\Enums\CheckoutType;
-use Organon\LaravelEcash\Enums\PaymentStatus;
-use Organon\LaravelEcash\Facades\LaravelEcashClient;
+use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Enums\CheckoutType;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Facades\LaravelEcashClient;
 
 use function Pest\Laravel\postJson;
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace Organon\LaravelEcash\Facades;
+namespace Alhelwany\LaravelEcash\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Organon\LaravelEcash\Models\EcashPayment checkout(\Organon\LaravelEcash\DataObjects\PaymentDataObject $paymentDataObject)
+ * @method static \Alhelwany\LaravelEcash\Models\EcashPayment checkout(\Alhelwany\LaravelEcash\DataObjects\PaymentDataObject $paymentDataObject)
  * @method static boolean verifyCallbackToken(string $token, string $transactionNo, string $amount, string $orderRef)
- * @see \Organon\LaravelEcash\LaravelEcashClient
+ * @see \Alhelwany\LaravelEcash\LaravelEcashClient
  */
 class LaravelEcashClient extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Organon\LaravelEcash\LaravelEcashClient::class;
+        return \Alhelwany\LaravelEcash\LaravelEcashClient::class;
     }
 }

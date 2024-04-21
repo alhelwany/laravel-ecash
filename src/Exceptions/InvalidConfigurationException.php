@@ -1,6 +1,6 @@
 <?php
 
-namespace Organon\LaravelEcash\Exceptions;
+namespace Alhelwany\LaravelEcash\Exceptions;
 
 use Exception;
 

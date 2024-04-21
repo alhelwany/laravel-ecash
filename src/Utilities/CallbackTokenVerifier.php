@@ -1,6 +1,6 @@
 <?php
 
-namespace Organon\LaravelEcash\Utilities;
+namespace Alhelwany\LaravelEcash\Utilities;
 
 class CallbackTokenVerifier
 {

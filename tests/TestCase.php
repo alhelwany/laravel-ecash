@@ -1,8 +1,8 @@
 <?php
 
-namespace Organon\LaravelEcash\Tests;
+namespace Alhelwany\LaravelEcash\Tests;
 
-use Organon\LaravelEcash\LaravelEcashServiceProvider;
+use Alhelwany\LaravelEcash\LaravelEcashServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\URL;
@@ -17,7 +17,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Organon\\LaravelEcash\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Alhelwany\\LaravelEcash\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 

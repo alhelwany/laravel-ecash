@@ -1,18 +1,18 @@
 <?php
 
-namespace Organon\LaravelEcash;
+namespace Alhelwany\LaravelEcash;
 
-use Organon\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
-use Organon\LaravelEcash\Exceptions\InvalidAmountException;
-use Organon\LaravelEcash\Exceptions\InvalidConfigurationException;
-use Organon\LaravelEcash\Models\EcashPayment;
-use Organon\LaravelEcash\Utilities\ArrayToUrl;
-use Organon\LaravelEcash\Utilities\CallbackTokenVerifier;
-use Organon\LaravelEcash\Utilities\PaymentModelUtility;
-use Organon\LaravelEcash\Utilities\PaymentUrlGenerator;
-use Organon\LaravelEcash\Utilities\UrlEncoder;
-use Organon\LaravelEcash\Utilities\VerificationCodeGenerator;
+use Alhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
+use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Exceptions\InvalidAmountException;
+use Alhelwany\LaravelEcash\Exceptions\InvalidConfigurationException;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Utilities\ArrayToUrl;
+use Alhelwany\LaravelEcash\Utilities\CallbackTokenVerifier;
+use Alhelwany\LaravelEcash\Utilities\PaymentModelUtility;
+use Alhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
+use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
+use Alhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 
 class LaravelEcashClient

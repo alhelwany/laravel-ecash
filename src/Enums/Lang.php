@@ -1,6 +1,6 @@
 <?php
 
-namespace Organon\LaravelEcash\Enums;
+namespace Alhelwany\LaravelEcash\Enums;
 
 enum Lang: string
 {

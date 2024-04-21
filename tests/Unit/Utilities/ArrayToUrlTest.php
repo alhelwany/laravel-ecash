@@ -1,6 +1,6 @@
 <?php
 
-use Organon\LaravelEcash\Utilities\ArrayToUrl;
+use Alhelwany\LaravelEcash\Utilities\ArrayToUrl;
 
 $arrayToUrlObject = new ArrayToUrl;
 

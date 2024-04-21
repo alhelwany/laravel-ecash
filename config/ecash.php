@@ -1,6 +1,6 @@
 <?php
 
-// config for Organon/LaravelEcash
+// config for Alhelwany/LaravelEcash
 return [
     'gatewayUrl' => env('ECASH_GATEWAY_URL', 'https://checkout.ecash-pay.co'),
     'terminalKey' => env('ECASH_TERMINAL_KEY', null),

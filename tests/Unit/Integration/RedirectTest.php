@@ -1,11 +1,11 @@
 <?php
 
-use Organon\LaravelEcash\DataObjects\PaymentDataObject;
-use Organon\LaravelEcash\Enums\CheckoutType;
-use Organon\LaravelEcash\Enums\PaymentStatus;
-use Organon\LaravelEcash\Facades\LaravelEcashClient;
-use Organon\LaravelEcash\Models\EcashPayment;
-use Organon\LaravelEcash\Utilities\UrlEncoder;
+use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Enums\CheckoutType;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Facades\LaravelEcashClient;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
 
 use function Pest\Laravel\getJson;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Organon\LaravelEcash\Http\Controllers;
+namespace Alhelwany\LaravelEcash\Http\Controllers;
 
-use Organon\LaravelEcash\Enums\PaymentStatus;
-use Organon\LaravelEcash\Events\PaymentStatusUpdated;
-use Organon\LaravelEcash\Http\Requests\RedirectRequest;
-use Organon\LaravelEcash\Models\EcashPayment;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Events\PaymentStatusUpdated;
+use Alhelwany\LaravelEcash\Http\Requests\RedirectRequest;
+use Alhelwany\LaravelEcash\Models\EcashPayment;
 
 class RedirectController
 {

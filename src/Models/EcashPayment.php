@@ -1,12 +1,12 @@
 <?php
 
-namespace Organon\LaravelEcash\Models;
+namespace Alhelwany\LaravelEcash\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
-use Organon\LaravelEcash\Enums\CheckoutType;
-use Organon\LaravelEcash\Enums\Currency;
-use Organon\LaravelEcash\Enums\PaymentStatus;
+use Alhelwany\LaravelEcash\Enums\CheckoutType;
+use Alhelwany\LaravelEcash\Enums\Currency;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
 
 /**
  * @property float $amount

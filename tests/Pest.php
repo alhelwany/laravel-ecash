@@ -1,5 +1,5 @@
 <?php
 
-use Organon\LaravelEcash\Tests\TestCase;
+use Alhelwany\LaravelEcash\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
