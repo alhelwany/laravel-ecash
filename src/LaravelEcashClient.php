@@ -4,13 +4,16 @@ namespace Alhelwany\LaravelEcash;
 
 use Alhelwany\LaravelEcash\DataObjects\ExtendedPaymentDataObject;
 use Alhelwany\LaravelEcash\DataObjects\PaymentDataObject;
+use Alhelwany\LaravelEcash\Enums\PaymentStatus;
 use Alhelwany\LaravelEcash\Exceptions\InvalidAmountException;
 use Alhelwany\LaravelEcash\Exceptions\InvalidConfigurationException;
+use Alhelwany\LaravelEcash\Exceptions\PaymentNotPaidException;
 use Alhelwany\LaravelEcash\Models\EcashPayment;
 use Alhelwany\LaravelEcash\Utilities\ArrayToUrl;
 use Alhelwany\LaravelEcash\Utilities\CallbackTokenVerifier;
 use Alhelwany\LaravelEcash\Utilities\PaymentModelUtility;
 use Alhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
+use Alhelwany\LaravelEcash\Utilities\ReverseUtility;
 use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
 use Alhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
 
@@ -21,6 +24,7 @@ class LaravelEcashClient
     private VerificationCodeGenerator $verificationCodeGenerator;
     private PaymentModelUtility $paymentModelUtility;
     private CallbackTokenVerifier $callbackTokenVerifier;
+    private ReverseUtility $reverseUtility;
 
     /**
      * @param string $gatewayUrl
@@ -40,6 +44,7 @@ class LaravelEcashClient
         $this->verificationCodeGenerator = new VerificationCodeGenerator($merchantId, $merchantSecret);
         $this->paymentModelUtility = new PaymentModelUtility;
         $this->callbackTokenVerifier = new CallbackTokenVerifier($merchantId, $merchantSecret);
+        $this->reverseUtility = new ReverseUtility;
     }
 
     /**
@@ -142,5 +147,27 @@ class LaravelEcashClient
     public function verifyCallbackToken(string $token, string $transactionNo, string $amount, string $orderRef): bool
     {
         return $this->callbackTokenVerifier->verify($token, $transactionNo, $amount, $orderRef);
+    }
+
+
+    /**
+     * Reverses the payment
+     * 
+     * @param \Alhelwany\LaravelEcash\Models\EcashPayment $ecashPayment
+     * @throws \Alhelwany\LaravelEcash\Exceptions\PaymentNotPaidException
+     * @throws \Alhelwany\LaravelEcash\Exceptions\InvalidConfigurationException
+     * @throws \Alhelwany\LaravelEcash\Exceptions\EcashServerErrorException
+     * @return void
+     */
+    public function reverse(EcashPayment $ecashPayment): void
+    {
+        $ecashPayment->refresh();
+
+        if ($ecashPayment->status != PaymentStatus::PAID)
+            throw new PaymentNotPaidException;
+
+        $this->reverseUtility->reverse($ecashPayment->transaction_no);
+
+        $ecashPayment->update(['status' => PaymentStatus::REVERSED]);
     }
 }
