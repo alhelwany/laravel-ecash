@@ -9,6 +9,7 @@ use Alhelwany\LaravelEcash\Enums\Currency;
 use Alhelwany\LaravelEcash\Enums\PaymentStatus;
 
 /**
+ * @property string $id
  * @property float $amount
  * @property CheckoutType $checkout_type
  * @property Currency $currency
