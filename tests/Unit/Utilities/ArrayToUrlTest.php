@@ -6,14 +6,14 @@ $arrayToUrlObject = new ArrayToUrl;
 
 it('can generate URL from Array', function () use ($arrayToUrlObject) {
     $array = [
-        'param1',
+        'hi' => 'param1',
         null,
-        'param2',
-        69.69,
+        'hii' => 'param2',
+        'num1' => 69.69,
         null,
-        420,
+        'num2' => 420,
     ];
     $baseUrl = 'https://www.google.com';
-    $expectedUrl = 'https://www.google.com/param1/param2/69.69/420';
+    $expectedUrl = 'https://www.google.com?hi=param1&hii=param2&num1=69.69&num2=420';
     expect($arrayToUrlObject->generate($baseUrl, $array))->toBe($expectedUrl);
 });

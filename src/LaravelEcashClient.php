@@ -14,7 +14,6 @@ use Alhelwany\LaravelEcash\Utilities\CallbackTokenVerifier;
 use Alhelwany\LaravelEcash\Utilities\PaymentModelUtility;
 use Alhelwany\LaravelEcash\Utilities\PaymentUrlGenerator;
 use Alhelwany\LaravelEcash\Utilities\ReverseUtility;
-use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
 use Alhelwany\LaravelEcash\Utilities\VerificationCodeGenerator;
 
 
@@ -39,7 +38,6 @@ class LaravelEcashClient
             $terminalKey,
             $merchantId,
             new ArrayToUrl,
-            new UrlEncoder
         );
         $this->verificationCodeGenerator = new VerificationCodeGenerator($merchantId, $merchantSecret);
         $this->paymentModelUtility = new PaymentModelUtility;

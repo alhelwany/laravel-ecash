@@ -9,14 +9,12 @@ use Alhelwany\LaravelEcash\Exceptions\InvalidAmountException;
 use Alhelwany\LaravelEcash\Exceptions\InvalidConfigurationException;
 use Alhelwany\LaravelEcash\Facades\LaravelEcashClient;
 use Alhelwany\LaravelEcash\Models\EcashPayment;
-use Alhelwany\LaravelEcash\Utilities\UrlEncoder;
 
 
 it('can checkout', function () {
 
-    $urlEncoder = new UrlEncoder;
 
-    $encodedCallbackUrl = $urlEncoder->encode(route('ecash.callback'));
+    $encodedCallbackUrl = urlencode(route('ecash.callback'));
 
     $checkoutType = CheckoutType::QR;
     $amount = 10.10;
@@ -26,7 +24,7 @@ it('can checkout', function () {
     $token = strtoupper(md5(config()->get('ecash.merchantId') . config()->get('ecash.merchantSecret') . $amount . $model->id));
     $modelId = $model['id'];
 
-    $encodedRedirectUrl = $urlEncoder->encode(
+    $encodedRedirectUrl = urlencode(
         route('ecash.redirect', [
             'paymentId' => $modelId,
             'token' => $token,
@@ -35,7 +33,7 @@ it('can checkout', function () {
     );
 
 
-    expect($model['checkout_url'])->toBe("https://checkout.ecash-pay.co/checkout/QR/12345/54321/$token/SYP/10.1/AR/$modelId/$encodedRedirectUrl/$encodedCallbackUrl");
+    expect($model['checkout_url'])->toBe("https://checkout.ecash-pay.co/checkout/QR?tk=12345&mid=54321&vc=$token&c=SYP&a=10.1&lang=AR&or=$modelId&ru=$encodedRedirectUrl&cu=$encodedCallbackUrl");
 
     expect($model['amount'])->toBe($amount);
     expect($model['checkout_type'])->toBe($checkoutType);
@@ -53,7 +51,7 @@ it('can checkout', function () {
     $token = strtoupper(md5(config()->get('ecash.merchantId') . config()->get('ecash.merchantSecret') . $amount . $model->id));
     $modelId = $model['id'];
 
-    $encodedRedirectUrl = $urlEncoder->encode(
+    $encodedRedirectUrl = urlencode(
         route('ecash.redirect', [
             'paymentId' => $modelId,
             'token' => $token,
@@ -61,7 +59,7 @@ it('can checkout', function () {
         ])
     );
 
-    expect($model['checkout_url'])->toBe("https://checkout.ecash-pay.co/checkout/Card/12345/54321/$token/SYP/10.1/EN/$modelId/$encodedRedirectUrl/$encodedCallbackUrl");
+    expect($model['checkout_url'])->toBe("https://checkout.ecash-pay.co/checkout/Card?tk=12345&mid=54321&vc=$token&c=SYP&a=10.1&lang=EN&or=$modelId&ru=$encodedRedirectUrl&cu=$encodedCallbackUrl");
 
     expect(EcashPayment::count())->toBe(2);
 });

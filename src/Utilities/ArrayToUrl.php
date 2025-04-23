@@ -5,7 +5,7 @@ namespace Alhelwany\LaravelEcash\Utilities;
 class ArrayToUrl
 {
     /**
-     * enerates a URL from a base Url & args, ignores nulls in the array
+     * enerates a URL from a base Url & args
      *
      * @param string $baseUrl
      * @param array $args
@@ -13,13 +13,6 @@ class ArrayToUrl
      */
     public function generate(string $baseUrl, array $args): string
     {
-        $url = $baseUrl;
-        foreach ($args as $arg) {
-            if (!is_null($arg)) {
-                $url .= '/' . $arg;
-            }
-        }
-
-        return $url;
+        return $baseUrl . '?' . http_build_query($args);
     }
 }
