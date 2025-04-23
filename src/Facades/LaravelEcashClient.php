@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static \Alhelwany\LaravelEcash\Models\EcashPayment checkout(\Alhelwany\LaravelEcash\DataObjects\PaymentDataObject $paymentDataObject)
  * @method static boolean verifyCallbackToken(string $token, string $transactionNo, string $amount, string $orderRef)
+ * @method static void reverse(EcashPayment $ecashPayment)
  * @see \Alhelwany\LaravelEcash\LaravelEcashClient
  */
 class LaravelEcashClient extends Facade
